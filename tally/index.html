@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tally</title>
+<meta name="description" content="A small task tracker. Add what's next, strike it through.">
+<meta name="theme-color" content="#171411">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/icon-180.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="day">
+  <p class="day__date" id="dayDate"></p>
+  <div class="day__tally" id="tally" role="img" aria-label="No tasks done yet today"></div>
+  <p class="day__remaining" id="remaining"></p>
+</header>
+
+<nav class="filters" aria-label="Filter tasks">
+  <button class="chip is-active" type="button" data-filter="all" aria-pressed="true">All</button>
+  <button class="chip" type="button" data-filter="active" aria-pressed="false">Active</button>
+  <button class="chip" type="button" data-filter="done" aria-pressed="false">Done</button>
+</nav>
+
+<main>
+  <ul class="tasks" id="taskList"></ul>
+  <p class="empty" id="empty" hidden></p>
+</main>
+
+<form class="composer" id="composer">
+  <input id="taskInput" type="text" autocomplete="off" maxlength="200"
+         placeholder="Add a task" aria-label="Task description">
+  <button type="submit" aria-label="Add task">+</button>
+</form>
+
+<script src="app.js"></script>
+</body>
+</html>
