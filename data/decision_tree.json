@@ -1,0 +1,137 @@
+{
+  "name": "Robot Fault Isolation Tree",
+  "version": 1,
+  "root": "unresponsive",
+  "nodes": {
+    "unresponsive": {
+      "question": "Is the robot completely unresponsive (no power-on, no network heartbeat)?",
+      "yes": "power_check",
+      "no": "sensor_fault"
+    },
+    "power_check": {
+      "question": "Does the robot draw normal idle current (> 0.1 A) when powered?",
+      "yes": "leaf_controller",
+      "no": "leaf_power"
+    },
+    "sensor_fault": {
+      "question": "Is the robot reporting sensor faults or abnormal sensor readings?",
+      "yes": "optical_sensor",
+      "no": "motion_fault"
+    },
+    "optical_sensor": {
+      "question": "Is the affected sensor optical (lidar / camera)?",
+      "yes": "leaf_optical",
+      "no": "bus_errors"
+    },
+    "bus_errors": {
+      "question": "Do I2C / data-bus errors appear in the system log?",
+      "yes": "leaf_wiring",
+      "no": "leaf_sensor_cal"
+    },
+    "motion_fault": {
+      "question": "Is the fault an overcurrent, drive, or motion fault?",
+      "yes": "free_movement",
+      "no": "post_update"
+    },
+    "free_movement": {
+      "question": "With drives de-energized, does the affected wheel/joint move freely by hand?",
+      "yes": "leaf_actuator",
+      "no": "leaf_mechanical"
+    },
+    "post_update": {
+      "question": "Did the fault begin after a firmware/config change, or is the robot reboot-looping?",
+      "yes": "leaf_software",
+      "no": "leaf_escalate"
+    },
+    "leaf_power": {
+      "diagnosis": "Battery or power-delivery failure",
+      "category": "power",
+      "actions": [
+        "Measure battery pack voltage at the connector; compare to spec for BAT-9000/BAT-12000",
+        "Inspect power harness for chafing or intermittent opens (see RBT-006 harness history)",
+        "Charge or replace battery pack; verify part revision matches fleet baseline",
+        "If power delivery is good but robot stays dark, escalate to controller diagnosis"
+      ]
+    },
+    "leaf_controller": {
+      "diagnosis": "Main controller failure suspected (CTRL-X7 / CTRL-X9)",
+      "category": "controller",
+      "actions": [
+        "Reseat controller power and data connectors",
+        "Check controller fuse and status LEDs against the service manual",
+        "Attempt recovery boot / firmware reflash from known-good image",
+        "Replace controller module; record serial and firmware in fleet config"
+      ]
+    },
+    "leaf_optical": {
+      "diagnosis": "Optical sensor degradation (lidar dropouts / occlusion)",
+      "category": "sensor",
+      "actions": [
+        "Clean optical window with approved optics wipes",
+        "Reseat lidar connector and inspect pins (recurrence pattern: RBT-003)",
+        "Run sensor self-test; compare point-cloud density to a known-good unit",
+        "If dropouts recur after reseat + clean, replace lidar and open RMA"
+      ]
+    },
+    "leaf_wiring": {
+      "diagnosis": "Wiring / connector fault on sensor data bus",
+      "category": "wiring",
+      "actions": [
+        "Re-terminate the affected connector; verify crimp quality",
+        "Apply locking compound to prevent back-out (see RBT-007 IMU fix)",
+        "Add abrasion sleeve where harness contacts chassis",
+        "Wiggle-test under power while monitoring bus error counters"
+      ]
+    },
+    "leaf_sensor_cal": {
+      "diagnosis": "Sensor drift or internal sensor failure",
+      "category": "sensor",
+      "actions": [
+        "Compare sensor reading against a calibrated external reference",
+        "Recalibrate per sensor procedure; if drift persists, replace module (see RBT-005 temp sensor)",
+        "Verify replacement against reference before returning robot to service",
+        "Log calibration values in the maintenance record"
+      ]
+    },
+    "leaf_actuator": {
+      "diagnosis": "Drive motor / actuator electrical fault (overcurrent)",
+      "category": "actuator",
+      "actions": [
+        "Measure motor winding resistance phase-to-phase; compare to DM-440/DM-880 spec",
+        "Inspect motor power connector for heat damage",
+        "Replace drive motor; recalibrate dependent sensors (load_cell on HaulBot, see RBT-004)",
+        "Run loaded test cycle and confirm current stays within limits"
+      ]
+    },
+    "leaf_mechanical": {
+      "diagnosis": "Mechanical seizure (bearing, caster, or drivetrain)",
+      "category": "mechanical",
+      "actions": [
+        "Identify the binding element by isolating each stage of the drivetrain",
+        "Replace seized bearing/caster assembly (see RBT-006 caster seizure)",
+        "Inspect adjacent components for debris or wear that caused the seizure",
+        "Lubricate per PM spec and run unloaded break-in before returning to service"
+      ]
+    },
+    "leaf_software": {
+      "diagnosis": "Software / firmware regression (watchdog loop, config fault)",
+      "category": "software",
+      "actions": [
+        "Capture logs before any reset - preserve evidence for root cause",
+        "Roll back the most recent config change (see RBT-003 watchdog loop)",
+        "Update firmware to the fleet baseline version if the unit is behind",
+        "Soak-test for 24 h before clearing the fault"
+      ]
+    },
+    "leaf_escalate": {
+      "diagnosis": "Unclassified fault - escalate with full evidence package",
+      "category": "unknown",
+      "actions": [
+        "Capture full system logs, telemetry export, and photos of the unit",
+        "Record exact symptom timeline and any recent maintenance in the ticket",
+        "Tag the robot out of service and update fleet status to 'down'",
+        "Escalate to site engineering with the evidence package"
+      ]
+    }
+  }
+}

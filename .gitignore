@@ -1,0 +1,7 @@
+# Python
+__pycache__/
+*.pyc
+
+# Private prep material — keep local, never publish
+docs/INTERVIEW_PREP.md
+tasks/

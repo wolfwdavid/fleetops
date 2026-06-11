@@ -1,0 +1,95 @@
+{
+  "fleet_name": "DC-West Robotic Fleet",
+  "site": "Google Cloud Data Center - The Dalles (sim)",
+  "schema_version": 1,
+  "robots": [
+    {
+      "id": "RBT-001",
+      "model": "InspectBot-A2",
+      "firmware": "2.4.1",
+      "commissioned": "2025-03-12",
+      "status": "operational",
+      "sensors": ["lidar", "imu", "temp", "current"],
+      "parts": {"battery": "BAT-9000-rev2", "drive_motor": "DM-440", "controller": "CTRL-X7"},
+      "last_pm": "2026-05-20",
+      "pm_interval_days": 30
+    },
+    {
+      "id": "RBT-002",
+      "model": "InspectBot-A2",
+      "firmware": "2.4.1",
+      "commissioned": "2025-03-12",
+      "status": "operational",
+      "sensors": ["lidar", "imu", "temp", "current"],
+      "parts": {"battery": "BAT-9000-rev2", "drive_motor": "DM-440", "controller": "CTRL-X7"},
+      "last_pm": "2026-05-22",
+      "pm_interval_days": 30
+    },
+    {
+      "id": "RBT-003",
+      "model": "InspectBot-A2",
+      "firmware": "2.3.0",
+      "commissioned": "2025-04-01",
+      "status": "degraded",
+      "sensors": ["lidar", "imu", "temp", "current"],
+      "parts": {"battery": "BAT-9000-rev1", "drive_motor": "DM-440", "controller": "CTRL-X7"},
+      "last_pm": "2026-04-02",
+      "pm_interval_days": 30
+    },
+    {
+      "id": "RBT-004",
+      "model": "HaulBot-B1",
+      "firmware": "3.1.5",
+      "commissioned": "2025-06-18",
+      "status": "operational",
+      "sensors": ["lidar", "imu", "temp", "current", "load_cell"],
+      "parts": {"battery": "BAT-12000", "drive_motor": "DM-880", "controller": "CTRL-X9"},
+      "last_pm": "2026-05-28",
+      "pm_interval_days": 30
+    },
+    {
+      "id": "RBT-005",
+      "model": "HaulBot-B1",
+      "firmware": "3.1.5",
+      "commissioned": "2025-06-18",
+      "status": "operational",
+      "sensors": ["lidar", "imu", "temp", "current", "load_cell"],
+      "parts": {"battery": "BAT-12000", "drive_motor": "DM-880", "controller": "CTRL-X9"},
+      "last_pm": "2026-05-30",
+      "pm_interval_days": 30
+    },
+    {
+      "id": "RBT-006",
+      "model": "HaulBot-B1",
+      "firmware": "3.0.9",
+      "commissioned": "2025-07-02",
+      "status": "down",
+      "sensors": ["lidar", "imu", "temp", "current", "load_cell"],
+      "parts": {"battery": "BAT-12000", "drive_motor": "DM-880", "controller": "CTRL-X9"},
+      "last_pm": "2026-03-15",
+      "pm_interval_days": 30
+    },
+    {
+      "id": "RBT-007",
+      "model": "InspectBot-A2",
+      "firmware": "2.4.1",
+      "commissioned": "2025-09-10",
+      "status": "operational",
+      "sensors": ["lidar", "imu", "temp", "current"],
+      "parts": {"battery": "BAT-9000-rev2", "drive_motor": "DM-440", "controller": "CTRL-X7"},
+      "last_pm": "2026-06-01",
+      "pm_interval_days": 30
+    },
+    {
+      "id": "RBT-008",
+      "model": "HaulBot-B1",
+      "firmware": "3.1.5",
+      "commissioned": "2025-11-22",
+      "status": "operational",
+      "sensors": ["lidar", "imu", "temp", "current", "load_cell"],
+      "parts": {"battery": "BAT-12000", "drive_motor": "DM-880", "controller": "CTRL-X9"},
+      "last_pm": "2026-05-25",
+      "pm_interval_days": 30
+    }
+  ]
+}

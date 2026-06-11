@@ -1,0 +1,19 @@
+date,robot_id,event_type,category,downtime_hours,description
+2026-05-02,RBT-003,failure,sensor,4.5,Lidar intermittent dropouts during patrol
+2026-05-02,RBT-003,repair,sensor,0,Reseated lidar connector; cleaned optical window
+2026-05-06,RBT-006,failure,wiring,9.0,Current sensor harness chafed against chassis - intermittent open
+2026-05-07,RBT-006,repair,wiring,0,Replaced harness segment; added abrasion sleeve
+2026-05-11,RBT-001,pm,preventive,1.5,Monthly PM - lubrication, connector inspection, firmware check
+2026-05-12,RBT-004,failure,actuator,6.0,Drive motor DM-880 overcurrent fault under load
+2026-05-13,RBT-004,repair,actuator,0,Replaced drive motor; recalibrated load_cell
+2026-05-18,RBT-003,failure,software,2.0,Firmware 2.3.0 watchdog reboot loop
+2026-05-18,RBT-003,repair,software,0,Rolled back config; scheduled firmware update to 2.4.1
+2026-05-24,RBT-006,failure,mechanical,12.0,Caster bearing seized - robot immobile
+2026-05-25,RBT-006,repair,mechanical,0,Replaced caster assembly; awaiting parts for full return
+2026-05-27,RBT-002,pm,preventive,1.5,Monthly PM - all checks nominal
+2026-05-29,RBT-005,failure,sensor,3.0,Temp sensor reading drift - false thermal warnings
+2026-05-29,RBT-005,repair,sensor,0,Replaced temp sensor module; verified calibration
+2026-06-03,RBT-007,failure,wiring,5.5,IMU data bus connector backed out - I2C errors
+2026-06-03,RBT-007,repair,wiring,0,Re-terminated connector; applied locking compound
+2026-06-05,RBT-008,pm,preventive,1.5,Monthly PM - replaced worn drive belt proactively
+2026-06-08,RBT-003,failure,sensor,4.0,Lidar dropout recurrence - root cause investigation open
